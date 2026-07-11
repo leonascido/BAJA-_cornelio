@@ -1,0 +1,38 @@
+Eu especifiquei mais o primeiro resumo, pois os outros tem sistemas muito parecidos, seja para entradas digitais, analogicas etc
+
+RESUMO MECU
+
+MECU me parece a ECU central do carro, então no esquemático ela está dividida em uma folha de tensõa, uma de CAN e uma de microcontrolado
+
+A parte de alimentação é mais simples, recebe 12v da FUSE, que tem um fusível como proteção.
+Tem um buck para transformar esse 12 para 5, e mais um regulador para transformar esse 5 em 3,3v - que é a tensão que o ESP32 funciona.
+
+Na Comunicação temos, primeiro um transceiver, que faz a tradução bruta do CAN para TTL e vice-versa, depois um controlador de CAN, que faz toda a parte de tradução TTL em interface SPI para o ESP, junto com um Oscilador de cristal para manter o mesmo clock da CAN. Também tem o conector microSD, que permite gravar o log de can do veículo.
+
+Placa principal - alimentação ESP com dois capacitores, para evitar picos de corrente.
+Comunicação serial com painel pelo J2
+
+Comunicação serial com modem pelo J3 - para telemetria
+
+Pinos com a interface SPI que vão para o microcontrolador MCP2515 para interpretação de sinais.
+
+Conector upload para gravar firmware no ESP
+
+RESET - quando apartao botão o pino enable vai para GND e reinicia a placa
+BOOT - modo bootloader
+
+RESUMO FECU
+
+é uma ECU que mais tem sensores, 6 sensores analógicos e dois digitais
+Alem dos mesmos sistemas de CAN e Alimetação.
+A diferença mais gritante para mim foi os reles de bobina e do diferencial
+
+RESUMO PTECU
+
+Nela temos alguns sensores importantes, o de velocidade e RPM.
+(gordon disse que combustivel não existe por conta do regulamento e que a temp interna existe para todas as ECUS)
+Tambem tem sd, can e alimentação bem proxima das outras placas.
+
+RESUMO RECU
+
+A RECU tem sensores da parte de tras do carro, relacionados com a bateria e pressão de freio (não lembro o que são as perinhas)
